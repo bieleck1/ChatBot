@@ -25,12 +25,13 @@ public class Ngram {
         this.counterUser = 0;
     }
 
-    public String getNgram() {
+    public String getPrefix() {
         return this.prefix;
     }
     
     public int getCounterBot(){
         return this.counterBot;
+        
     }
     
     public int getCounterUser(){

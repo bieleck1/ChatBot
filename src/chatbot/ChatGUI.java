@@ -6,6 +6,7 @@
 package chatbot;
 
 import dictionary.Dictionary;
+import dictionary.Fragmentation;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author abc
  */
 public class ChatGUI extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form ChatGUI
      */
@@ -162,6 +163,7 @@ public class ChatGUI extends javax.swing.JFrame {
         if (userText.getText().equals("Wprowadź tekst...")) {
             userText.setText("");
         }
+
     }//GEN-LAST:event_userTextMouseClicked
 
     private void localizationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localizationMouseClicked
@@ -174,6 +176,8 @@ public class ChatGUI extends javax.swing.JFrame {
         File file = new File(localization.getText());
         if (file.isFile()) {
             localization.setText("Wprowadź lokalizacje pliku...");
+            fragmentation = new Fragmentation(ngram.getSelectedIndex());
+            fragmentation.fragmentationFile(file, dictionary.getPrefixList());
         } else {
             JOptionPane.showMessageDialog(null, "Nie będę się z tego uczył. Daj mi coś innego.", "Gienek", 2);
         }
@@ -185,6 +189,8 @@ public class ChatGUI extends javax.swing.JFrame {
 
             } else {
                 textArea.setText(textArea.getText() + userText.getText() + "\n");
+                fragmentation = new Fragmentation(ngram.getSelectedIndex());
+                fragmentation.fragmentationUser(userText.getText(), dictionary.getPrefixList());
                 userText.setText("");
             }
         }
@@ -229,7 +235,7 @@ public class ChatGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saverActionPerformed
 
     private void ngramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngramActionPerformed
-                dictionary.setGrade(ngram.getSelectedIndex());
+        dictionary.setGrade(ngram.getSelectedIndex());
     }//GEN-LAST:event_ngramActionPerformed
 
     /**
@@ -280,7 +286,8 @@ public class ChatGUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Dictionary dictionary = new Dictionary();
-    
+    private Fragmentation fragmentation;
+
     class MyFilter extends javax.swing.filechooser.FileFilter {
 
         @Override
