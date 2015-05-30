@@ -11,22 +11,22 @@ import java.util.ArrayList;
  *
  * @author abc
  */
-public class Word {
+public class Ngram {
 
-    private ArrayList<Word> suffixesList;
-    private String word;
+    private ArrayList<String> suffixesList;
+    private final String prefix;
     private int counterBot;
     private int counterUser;
 
-    public Word(String word) {
-        this.word = word;
+    public Ngram(String prefix) {
+        this.prefix = prefix;
         this.suffixesList = new ArrayList<>();
         this.counterBot = 0;
         this.counterUser = 0;
     }
 
-    public String getWord() {
-        return this.word;
+    public String getNgram() {
+        return this.prefix;
     }
     
     public int getCounterBot(){
@@ -45,7 +45,11 @@ public class Word {
         this.counterUser++;
     }
     
-    public void addSuffix(Word w) {
+    public void addSuffix(String w) {
         this.suffixesList.add(w);
+    }
+    
+    public ArrayList<String> getSuffixes() {
+        return suffixesList;
     }
 }

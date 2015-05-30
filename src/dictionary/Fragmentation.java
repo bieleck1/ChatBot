@@ -5,7 +5,6 @@
  */
 package dictionary;
 
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
 
 /**
@@ -15,17 +14,17 @@ import java.util.ArrayList;
 
 
 public class Fragmentation {
-    ArrayList<Word> wordList = new ArrayList<>();
+    ArrayList<Ngram> wordList = new ArrayList<>();
     String g = "cos";
-    Word w = new Word(g);
+    Ngram w = new Ngram(g);
     
     
    
     
     public void Fragmentation(){
-        Word j = new Word("co");
+        Ngram j = new Ngram("co");
        
        wordList.add(j);
-       System.out.println(j.getWord());
+       System.out.println(j.getNgram());
     }
 }

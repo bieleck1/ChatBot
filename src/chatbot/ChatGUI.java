@@ -5,6 +5,7 @@
  */
 package chatbot;
 
+import dictionary.Dictionary;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author abc
  */
 public class ChatGUI extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ChatGUI
      */
@@ -25,15 +26,14 @@ public class ChatGUI extends javax.swing.JFrame {
         init();
     }
 
-    
-    public void init() {
+    private void init() {
         setVisible(true);
         setResizable(false);
-
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        dictionary.loadDictionary();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,6 +106,11 @@ public class ChatGUI extends javax.swing.JFrame {
 
         ngram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
         ngram.setToolTipText("Stopień Ngramu");
+        ngram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ngramActionPerformed(evt);
+            }
+        });
 
         conversation.setViewportView(textArea);
 
@@ -172,7 +177,6 @@ public class ChatGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Nie będę się z tego uczył. Daj mi coś innego.", "Gienek", 2);
         }
-
     }//GEN-LAST:event_localButtonActionPerformed
 
     private void userTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userTextKeyReleased
@@ -224,6 +228,10 @@ public class ChatGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saverActionPerformed
 
+    private void ngramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngramActionPerformed
+                dictionary.setGrade(ngram.getSelectedIndex());
+    }//GEN-LAST:event_ngramActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +279,8 @@ public class ChatGUI extends javax.swing.JFrame {
     private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
 
+    private Dictionary dictionary = new Dictionary();
+    
     class MyFilter extends javax.swing.filechooser.FileFilter {
 
         @Override

@@ -131,6 +131,9 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Stopie&#x144; Ngramu"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ngramActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="conversation">
       <AuxValues>
