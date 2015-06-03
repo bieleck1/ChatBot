@@ -32,6 +32,7 @@ public class ChatGUI extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setName("Rozgadany Gienek");
         dictionary.loadDictionary();
     }
 
@@ -55,6 +56,12 @@ public class ChatGUI extends javax.swing.JFrame {
         textArea = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rozgadany Gienek");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                Save(evt);
+            }
+        });
 
         localization.setText("Wprowadź lokalizacje pliku...");
         localization.setToolTipText("Wprowadź lokalizacje pliku...");
@@ -186,11 +193,16 @@ public class ChatGUI extends javax.swing.JFrame {
     private void userTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userTextKeyReleased
         if (evt.getKeyCode() == 10) {
             if (userText.getText().equals("/exit")) {
-
+                
             } else {
+                textArea.setText(textArea.getText() + "Ja: ");
                 textArea.setText(textArea.getText() + userText.getText() + "\n");
                 fragmentation = new Fragmentation(ngram.getSelectedIndex());
                 fragmentation.fragmentationUser(userText.getText(), dictionary.getPrefixList());
+                generator = new Generator(userText.getText());
+                String answer = generator.generate(dictionary.getPrefixList());
+                textArea.setText(textArea.getText() + "Gienek: ");
+                textArea.setText(textArea.getText() + answer + "\n");
                 userText.setText("");
             }
         }
@@ -237,6 +249,10 @@ public class ChatGUI extends javax.swing.JFrame {
     private void ngramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngramActionPerformed
         dictionary.setGrade(ngram.getSelectedIndex());
     }//GEN-LAST:event_ngramActionPerformed
+
+    private void Save(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_Save
+        dictionary.saveDictionary();
+    }//GEN-LAST:event_Save
 
     /**
      * @param args the command line arguments
@@ -285,8 +301,9 @@ public class ChatGUI extends javax.swing.JFrame {
     private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
 
-    private Dictionary dictionary = new Dictionary();
+    private final Dictionary dictionary = new Dictionary();
     private Fragmentation fragmentation;
+    private Generator generator;
 
     class MyFilter extends javax.swing.filechooser.FileFilter {
 
