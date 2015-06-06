@@ -53,7 +53,7 @@ public class Dictionary {
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(files.get(grade)), "UTF8"));
 
             for (int i = 0; i < prefixList.size(); i++) {
-                out.write(prefixList.get(i).getPrefix()+ ";");
+                out.write(prefixList.get(i).getPrefix() + ";");
 
                 for (int j = 0; j < prefixList.get(i).getSuffixes().size(); j++) {
                     out.write(prefixList.get(i).getSuffixes().get(j) + ";");
@@ -84,6 +84,19 @@ public class Dictionary {
                 }
             }
             in.close();
+        } catch (IOException e) {
+            System.out.println("Problem: " + e);
+        }
+    }
+
+    public void removeDictionary() {
+        try {
+            Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(files.get(grade)), "UTF8"));
+            out.write("");
+            out.close();
+            prefixList.clear();
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Problem: " + e);
         } catch (IOException e) {
             System.out.println("Problem: " + e);
         }

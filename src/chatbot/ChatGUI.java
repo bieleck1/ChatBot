@@ -52,6 +52,14 @@ public class ChatGUI extends javax.swing.JFrame {
         saver = new javax.swing.JButton();
         removeDictionary = new javax.swing.JButton();
         ngram = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        botBar1 = new javax.swing.JProgressBar();
+        botBar2 = new javax.swing.JProgressBar();
+        botBar3 = new javax.swing.JProgressBar();
+        userBar1 = new javax.swing.JProgressBar();
+        userBar2 = new javax.swing.JProgressBar();
+        userBar3 = new javax.swing.JProgressBar();
         conversation = new javax.swing.JScrollPane();
         textArea = new javax.swing.JEditorPane();
 
@@ -120,6 +128,27 @@ public class ChatGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setText("Statystyki komputera:");
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel2.setText("Statystyki użytkownika:");
+
+        botBar1.setToolTipText("");
+        botBar1.setName("Tak"); // NOI18N
+        botBar1.setStringPainted(true);
+
+        botBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botBar2.setStringPainted(true);
+
+        botBar3.setStringPainted(true);
+
+        userBar1.setStringPainted(true);
+
+        userBar2.setStringPainted(true);
+
+        userBar3.setStringPainted(true);
+
         conversation.setViewportView(textArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,15 +164,32 @@ public class ChatGUI extends javax.swing.JFrame {
                         .addComponent(chooser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(localButton))
-                    .addComponent(conversation)
-                    .addComponent(userText))
-                .addGap(4, 4, 4)
-                .addComponent(saver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(removeDictionary)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ngram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(userText)
+                    .addComponent(conversation))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(saver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(removeDictionary)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ngram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botBar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userBar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(11, 11, 11)))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,11 +203,32 @@ public class ChatGUI extends javax.swing.JFrame {
                     .addComponent(removeDictionary)
                     .addComponent(ngram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(conversation, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(conversation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(botBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(userBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(userBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(userBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 48, Short.MAX_VALUE))))
         );
+
+        botBar1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -192,19 +259,43 @@ public class ChatGUI extends javax.swing.JFrame {
 
     private void userTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userTextKeyReleased
         if (evt.getKeyCode() == 10) {
-            if (userText.getText().equals("/exit")) {
-                
-            } else {
-                textArea.setText(textArea.getText() + "Ja: ");
-                textArea.setText(textArea.getText() + userText.getText() + "\n");
-                fragmentation = new Fragmentation(ngram.getSelectedIndex());
-                fragmentation.fragmentationUser(userText.getText(), dictionary.getPrefixList());
-                generator = new Generator(userText.getText());
-                String answer = generator.generate(dictionary.getPrefixList());
-                textArea.setText(textArea.getText() + "Gienek: ");
-                textArea.setText(textArea.getText() + answer + "\n");
-                userText.setText("");
+            textArea.setText(textArea.getText() + "Ja: ");
+            textArea.setText(textArea.getText() + userText.getText() + "\n");
+
+            fragmentation = new Fragmentation(ngram.getSelectedIndex());
+            fragmentation.fragmentationUser(userText.getText(), dictionary.getPrefixList());
+
+            generator = new Generator(userText.getText(), statistic);
+            String answer = generator.generate(dictionary.getPrefixList());
+
+            statistic = generator.getStatistic();
+            statistic.fillMax();
+
+            userBar1.setValue(statistic.getWordsByUser().get(0).getCounter() * 100 / statistic.getAllUsages());
+            userBar1.setString(statistic.getWordsByUser().get(0).getWord() + " - " + ((statistic.getWordsByUser().get(0).getCounter() * 100 / statistic.getAllUsages())) + "%");
+            if (statistic.getWordsByUser().size() > 1) {
+                userBar2.setValue(statistic.getWordsByUser().get(1).getCounter() * 100 / statistic.getAllUsages());
+                userBar2.setString(statistic.getWordsByUser().get(1).getWord() + " - " + ((statistic.getWordsByUser().get(1).getCounter() * 100 / statistic.getAllUsages())) + "%");
             }
+            if (statistic.getWordsByUser().size() > 2) {
+                userBar3.setValue(statistic.getWordsByUser().get(2).getCounter() * 100 / statistic.getAllUsages());
+                userBar3.setString(statistic.getWordsByUser().get(2).getWord() + " - " + ((statistic.getWordsByUser().get(2).getCounter() * 100 / statistic.getAllUsages())) + "%");
+            }
+
+            botBar1.setValue(statistic.getWordsByBot().get(0).getCounter() * 100 / statistic.getAllUsages());
+            botBar1.setString(statistic.getWordsByBot().get(0).getWord() + " - " + ((statistic.getWordsByBot().get(0).getCounter() * 100 / statistic.getAllUsages())) + "%");
+            if (statistic.getWordsByBot().size() > 1) {
+                botBar2.setValue(statistic.getWordsByBot().get(1).getCounter() * 100 / statistic.getAllUsages());
+                botBar2.setString(statistic.getWordsByBot().get(1).getWord() + " - " + ((statistic.getWordsByBot().get(1).getCounter() * 100 / statistic.getAllUsages())) + "%");
+            }
+            if (statistic.getWordsByBot().size() > 2) {
+                botBar3.setValue(statistic.getWordsByBot().get(2).getCounter() * 100 / statistic.getAllUsages());
+                botBar3.setString(statistic.getWordsByBot().get(2).getWord() + " - " + ((statistic.getWordsByBot().get(2).getCounter() * 100 / statistic.getAllUsages())) + "%");
+            }
+
+            textArea.setText(textArea.getText() + "Gienek: ");
+            textArea.setText(textArea.getText() + answer + "\n");
+            userText.setText("");
         }
     }//GEN-LAST:event_userTextKeyReleased
 
@@ -221,6 +312,7 @@ public class ChatGUI extends javax.swing.JFrame {
     private void removeDictionaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeDictionaryActionPerformed
         int question = JOptionPane.showConfirmDialog(null, " Napewno chcesz pozbawić mnie całej wiedzy?", "Gienek", JOptionPane.YES_NO_OPTION);
         if (question == JOptionPane.YES_OPTION) {
+            dictionary.removeDictionary();
             JOptionPane.showMessageDialog(null, "MJKLanakhbsjas", "Gienek", 0);
         } else if (question == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "Uff, dziękuję przyjacielu!!!", "Gienek", -1);
@@ -283,6 +375,7 @@ public class ChatGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ChatGUI().setVisible(true);
             }
@@ -290,20 +383,29 @@ public class ChatGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar botBar1;
+    private javax.swing.JProgressBar botBar2;
+    private javax.swing.JProgressBar botBar3;
     private javax.swing.JButton chooser;
     private javax.swing.JScrollPane conversation;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton localButton;
     private javax.swing.JTextField localization;
     private javax.swing.JComboBox ngram;
     private javax.swing.JButton removeDictionary;
     private javax.swing.JButton saver;
     private javax.swing.JEditorPane textArea;
+    private javax.swing.JProgressBar userBar1;
+    private javax.swing.JProgressBar userBar2;
+    private javax.swing.JProgressBar userBar3;
     private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
 
     private final Dictionary dictionary = new Dictionary();
     private Fragmentation fragmentation;
     private Generator generator;
+    private Statistic statistic = new Statistic();
 
     class MyFilter extends javax.swing.filechooser.FileFilter {
 
